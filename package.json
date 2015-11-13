@@ -1,6 +1,6 @@
 {
   "name": "@pager/rod-mongo",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A hapi MongoDB plugin",
   "main": "lib/index.js",
   "engines": {
