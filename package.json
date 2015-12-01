@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/pagerinc/rod-mongo#readme",
   "dependencies": {
+    "hoek": "^3.0.4",
     "mongoose": "^4.2.5"
   },
   "devDependencies": {

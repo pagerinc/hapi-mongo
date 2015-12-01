@@ -36,7 +36,8 @@ it('can be registered as a plugin', (done) => {
     server.register(plugin, (err) => {
 
         expect(err).to.not.exist();
-        expect(server.plugins['@pager/rod-mongo'].db).to.exist();
+        expect(server.app.mongo).to.exist();
+        expect(server.app.mongo.close).to.be.a.function();
 
         return done();
     });

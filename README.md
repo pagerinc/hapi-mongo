@@ -22,6 +22,6 @@ server.register(plugin, (err) => {
 
     // Mongoose connection is now available to your handlers
 
-    const db = server.plugins['@pager/rod-mongo'].db;
+    const db = server.app.mongo;  // 'db' is now a Mongoose#connection instance
 });
 ```
