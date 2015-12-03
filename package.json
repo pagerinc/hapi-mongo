@@ -1,5 +1,5 @@
 {
-  "name": "@pager/rod-mongo",
+  "name": "@pager/hapi-mongo",
   "version": "0.1.0",
   "description": "A hapi MongoDB plugin",
   "main": "lib/index.js",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pagerinc/rod-mongo.git"
+    "url": "git+https://github.com/pagerinc/hapi-mongo.git"
   },
   "keywords": [
     "hapi",
@@ -23,9 +23,9 @@
   "author": "Gaston Festari <gaston@pager.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pagerinc/rod-mongo/issues"
+    "url": "https://github.com/pagerinc/hapi-mongo/issues"
   },
-  "homepage": "https://github.com/pagerinc/rod-mongo#readme",
+  "homepage": "https://github.com/pagerinc/hapi-mongo#readme",
   "dependencies": {
     "hoek": "^3.0.4",
     "mongoose": "^4.2.5"
