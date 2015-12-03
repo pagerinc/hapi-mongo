@@ -1,7 +1,7 @@
-# rod-mongo
+# Hapi-mongo
 A hapi Mongoose plugin
 
-[![Build Status](https://magnum.travis-ci.com/pagerinc/rod-mongo.svg?token=NDcPJVe9v2Bwqz2z7yDW)](https://magnum.travis-ci.com/pagerinc/rod-mongo)
+[![Build Status](https://magnum.travis-ci.com/pagerinc/hapi-mongo.svg?token=NDcPJVe9v2Bwqz2z7yDW)](https://magnum.travis-ci.com/pagerinc/hapi-mongo)
 
 This plugin provides a [MongoDB connection](http://mongoosejs.com/docs/connections.html) for your Hapi.js server. The configuration settings take the following options:
 
@@ -10,7 +10,7 @@ This plugin provides a [MongoDB connection](http://mongoosejs.com/docs/connectio
 
 ```javascript
 const plugin = {
-    register: require('@pager/rod-mongo'),
+    register: require('@pager/hapi-mongo'),
     options: { url: 'mongodb://localhost/test' }
 };
 
