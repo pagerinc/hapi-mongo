@@ -23,7 +23,7 @@ const it = lab.it;
 const expect = Code.expect;
 
 
-it('can be registered as a plugin', (done) => {
+it('can be registered as a plugin with provided url', (done) => {
 
     const server = new Hapi.Server();
     server.connection();
@@ -42,3 +42,44 @@ it('can be registered as a plugin', (done) => {
         return done();
     });
 });
+
+it('can be registered without provided url or env var', (done) => {
+
+    const server = new Hapi.Server();
+    server.connection();
+
+    const plugin = {
+        register: Mongo
+    };
+
+    server.register(plugin, (err) => {
+
+        expect(err).to.not.exist();
+        expect(server.app.mongo).to.exist();
+        expect(server.app.mongo.close).to.be.a.function();
+
+        return done();
+    });
+});
+
+it('can be registered without provided url but env var set', (done) => {
+
+    const server = new Hapi.Server();
+    process.env.MONGO_URL = 'mongodb://localhost/test';
+    server.connection();
+
+    const plugin = {
+        register: Mongo
+    };
+
+    server.register(plugin, (err) => {
+
+        expect(err).to.not.exist();
+        expect(server.app.mongo).to.exist();
+        expect(server.app.mongo.close).to.be.a.function();
+
+        return done();
+    });
+});
+
+
