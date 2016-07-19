@@ -25,15 +25,13 @@
     "url": "https://github.com/pagerinc/hapi-mongo/issues"
   },
   "homepage": "https://github.com/pagerinc/hapi-mongo#readme",
-  "peerDependencies": {
-    "hoek": "3.x.x",
+  "dependencies": {
+    "hoek": "4.x.x",
     "mongoose": "4.x.x"
   },
   "devDependencies": {
-    "code": "2.x.x",
-    "hapi": "12.x.x",
-    "hoek": "3.x.x",
-    "lab": "8.x.x",
-    "mongoose": "4.x.x"
+    "code": "3.x.x",
+    "hapi": "13.x.x",
+    "lab": "10.x.x"
   }
 }
