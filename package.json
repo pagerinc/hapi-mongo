@@ -30,8 +30,8 @@
     "mongoose": "4.x.x"
   },
   "devDependencies": {
-    "code": "3.x.x",
     "hapi": "13.x.x",
     "lab": "10.x.x"
+    "code": "4.x.x",
   }
 }
