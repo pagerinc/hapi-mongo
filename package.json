@@ -1,6 +1,6 @@
 {
   "name": "@pager/hapi-mongo",
-  "version": "3.0.2",
+  "version": "4.0.0",
   "description": "A hapi MongoDB plugin",
   "main": "lib/index.js",
   "engines": {
