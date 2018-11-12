@@ -11,7 +11,6 @@ const Mongo = require('../');
 
 const internals = {};
 
-
 // Test shortcuts
 
 const lab = exports.lab = Lab.script();
@@ -22,23 +21,23 @@ const it = lab.it;
 // const afterEach = lab.afterEach;
 const expect = Code.expect;
 
-
-it('can be registered as a plugin', (done) => {
+it('can be registered as a plugin', async () => {
 
     const server = new Hapi.Server();
-    server.connection();
 
     const plugin = {
-        register: Mongo,
-        options: { url: 'mongodb://localhost/test' }
+        plugin: Mongo,
+        options: {
+            url: 'mongodb://localhost/test',
+            settings: {
+                useNewUrlParser: true
+            }
+        }
     };
 
-    server.register(plugin, (err) => {
+    const err = await server.register(plugin);
 
-        expect(err).to.not.exist();
-        expect(server.app.mongo).to.exist();
-        expect(server.app.mongo.close).to.be.a.function();
-
-        return done();
-    });
+    expect(err).to.not.exist();
+    expect(server.app.mongo).to.exist();
+    expect(server.app.mongo.close).to.be.a.function();
 });
