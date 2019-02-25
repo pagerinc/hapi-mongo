@@ -15,7 +15,7 @@ const plugin = {
 };
 
 server.register(plugin, (err) => {
-    
+
     if (err) {
         throw err;
     }
@@ -25,3 +25,11 @@ server.register(plugin, (err) => {
     const db = server.app.mongo;  // 'db' is now a Mongoose#connection instance
 });
 ```
+
+# Versions
+ - Use v5.x.x in consumers using Hapi 16.
+ - Use v6.x.x in consumers using Hapi 18+.
+
+# Notes
+
+If you need to commit a change for consumers using Hapi 16, commit the change as a minor/patch to v5.x.x.  If the change also makes sense for Hapi 18+, commit the change to v6.x.x as well.
