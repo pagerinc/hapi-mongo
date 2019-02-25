@@ -14,12 +14,8 @@ const internals = {};
 // Test shortcuts
 
 const lab = exports.lab = Lab.script();
-const it = lab.it;
-// const before = lab.before;
-// const beforeEach = lab.beforeEach;
-// const after = lab.after;
-// const afterEach = lab.afterEach;
-const expect = Code.expect;
+const { it } = lab;
+const { expect } = Code;
 
 it('can be registered as a plugin', async () => {
 
@@ -35,9 +31,8 @@ it('can be registered as a plugin', async () => {
         }
     };
 
-    const err = await server.register(plugin);
+    await server.register(plugin);
 
-    expect(err).to.not.exist();
     expect(server.app.mongo).to.exist();
     expect(server.app.mongo.close).to.be.a.function();
 });
