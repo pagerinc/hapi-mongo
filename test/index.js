@@ -1,27 +1,29 @@
 'use strict';
 
-// Load modules
+const Code = require('@hapi/code');
+const Hapi = require('@hapi/hapi');
+const Lab = require('@hapi/lab');
 
-const Code = require('code');
-const Hapi = require('hapi');
-const Lab = require('lab');
 const Mongo = require('../');
 
-// Declare internals
-
-const internals = {};
-
-// Test shortcuts
-
 const lab = exports.lab = Lab.script();
-const { it, describe } = lab;
+const { it, describe, afterEach } = lab;
 const { expect } = Code;
+
+let server;
 
 describe('hapi-mongo', () => {
 
+    afterEach(async () => {
+
+        await server.app.mongo.close();
+        await server.stop();
+        server = null;
+    });
+
     it('can be registered as a plugin', async () => {
 
-        const server = new Hapi.Server();
+        server = new Hapi.Server();
 
         const plugin = {
             plugin: Mongo,
@@ -39,31 +41,23 @@ describe('hapi-mongo', () => {
         expect(server.app.mongo.close).to.be.a.function();
     });
 
-    it('should reset event listeners in mongoose connection on each new registration', async () => {
+    it('will use process env if no url passed', async () => {
+
+        process.env.MONGO_URL = 'mongodb://localhost/test';
+        server = new Hapi.Server();
 
         const plugin = {
             plugin: Mongo,
             options: {
-                url: 'mongodb://localhost/test',
                 settings: {
                     useNewUrlParser: true
                 }
             }
         };
 
-        let server = new Hapi.Server();
         await server.register(plugin);
-
-        server = new Hapi.Server();
-        await server.register(plugin);
-
-        server = new Hapi.Server();
-        await server.register(plugin);
-
 
         expect(server.app.mongo).to.exist();
-        expect(server.app.mongo.listenerCount('disconnected')).to.equal(1);
-        expect(server.app.mongo.listenerCount('reconnectFailed')).to.equal(1);
-        expect(server.app.mongo.listenerCount('error')).to.equal(1);
+        expect(server.app.mongo.close).to.be.a.function();
     });
 });
