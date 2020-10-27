@@ -4,6 +4,7 @@ defaults: &defaults
   working_directory: ~/repo
   docker:
     - image: circleci/node:12.19@sha256:7b0490968b4639d063f6f4b9bc9fbf7b959d0e1d4158281d6f2f6447056535ef
+    - image: mongo:4.4.1-bionic
 
 jobs:
   test:
@@ -12,13 +13,16 @@ jobs:
       - checkout
       - restore_cache:
           key: v1-dependencies-{{ checksum "package.json" }}
-      - run: 
+      - run:
           name: Install Dependencies
           command: npm install
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: Wait for MongoDB to receive connections
+          command: dockerize -wait tcp://localhost:27017 -timeout 1m
       - run:
           name: Run tests
           command: npm test
