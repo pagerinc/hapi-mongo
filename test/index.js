@@ -23,7 +23,7 @@ describe('hapi-mongo', () => {
 
     it('can be registered as a plugin', async () => {
 
-        server = new Hapi.Server();
+        server = Hapi.server();
 
         const plugin = {
             plugin: Mongo,
@@ -44,7 +44,7 @@ describe('hapi-mongo', () => {
     it('will use process env if no url passed', async () => {
 
         process.env.MONGO_URL = 'mongodb://localhost/test';
-        server = new Hapi.Server();
+        server = Hapi.server();
 
         const plugin = {
             plugin: Mongo,
