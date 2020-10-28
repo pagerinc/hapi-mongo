@@ -3,8 +3,8 @@ version: 2
 defaults: &defaults
   working_directory: ~/repo
   docker:
-    - image: circleci/node:12.19@sha256:7b0490968b4639d063f6f4b9bc9fbf7b959d0e1d4158281d6f2f6447056535ef
-    - image: mongo:4.4.1-bionic
+    - image: circleci/node:12
+    - image: mongo:4.4-bionic
 
 jobs:
   test:
