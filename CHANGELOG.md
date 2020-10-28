@@ -1,3 +1,10 @@
+## [7.0.2](https://github.com/pagerinc/hapi-mongo/compare/v7.0.1...v7.0.2) (2020-10-28)
+
+
+### Bug Fixes
+
+* reuse connection if already connected ([67f5c27](https://github.com/pagerinc/hapi-mongo/commit/67f5c27dd9b0636f4c6b555a9b1acdff94b2f144))
+
 ## [7.0.1](https://github.com/pagerinc/hapi-mongo/compare/v7.0.0...v7.0.1) (2020-10-28)
 
 
