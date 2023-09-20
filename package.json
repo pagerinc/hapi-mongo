@@ -1,5 +1,6 @@
 {
   "name": "@pager/hapi-mongo",
+  "private": true,
   "version": "7.0.2",
   "description": "A hapi MongoDB plugin",
   "main": "lib/index.js",
